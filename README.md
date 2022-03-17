@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Проект TestGuru.
+Данный проект создается в рамках обучения по курсу “Профессиональная разработка на Ruby on Rails” в онлайн-школе Thinknetica (www.thinknetica.com).
+Проект подразумевает создание системы онлайн тестирования пользователей.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Сущности проекта:
+1. Пользователь.
+2. Администратор.
+3. Тест.
+4. Тестирование.
+5. Результат теста.
