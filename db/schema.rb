@@ -10,44 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_08_000755) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_012349) do
   create_table "answers", force: :cascade do |t|
-    t.string "title"
-    t.integer "question_id"
-    t.boolean "correct"
+    t.string "title", null: false
+    t.integer "question_id", null: false
+    t.boolean "correct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "title"
-    t.integer "test_id"
+    t.string "title", null: false
+    t.integer "test_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string "title"
-    t.integer "level"
-    t.integer "category_id"
+    t.string "title", null: false
+    t.integer "level", default: 0, null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "nickname"
-    t.string "login"
-    t.string "password"
-    t.string "role"
+    t.string "nickname", null: false
+    t.string "login", null: false
+    t.string "password", null: false
+    t.string "role", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
+    t.string "email", null: false
     t.decimal "telephone"
     t.date "date_birth"
     t.string "gender"
