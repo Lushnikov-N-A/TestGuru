@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_202053) do
   create_table "answers", force: :cascade do |t|
     t.string "title", null: false
     t.integer "question_id", null: false
-    t.boolean "correct", default: false
+    t.boolean "correct", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -38,11 +38,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_202053) do
     t.string "title", null: false
     t.integer "level", default: 0, null: false
     t.integer "category_id", null: false
-    t.integer "user_id", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
-    t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,12 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_202053) do
     t.string "login", null: false
     t.string "password", null: false
     t.string "role", null: false
-    t.string "first_name"
-    t.string "last_name"
     t.string "email", null: false
-    t.decimal "telephone"
-    t.date "date_birth"
-    t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,5 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_202053) do
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "tests"
   add_foreign_key "tests", "categories"
-  add_foreign_key "tests", "users"
+  add_foreign_key "tests", "users", column: "author_id"
 end
