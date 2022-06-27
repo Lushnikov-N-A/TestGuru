@@ -42,6 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 20_220_623_204_007) do
     t.integer 'correct_questions', default: 0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['test_id'], name: 'index_test_passings_on_test_id'
+    t.index ['user_id'], name: 'index_test_passings_on_user_id'
   end
 
   create_table 'tests', force: :cascade do |t|
@@ -66,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 20_220_623_204_007) do
   end
 
   add_foreign_key 'questions', 'tests'
+  add_foreign_key 'test_passings', 'tests'
+  add_foreign_key 'test_passings', 'users'
   add_foreign_key 'tests', 'categories'
   add_foreign_key 'tests', 'users', column: 'author_id'
 end
