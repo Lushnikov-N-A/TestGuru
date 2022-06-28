@@ -10,10 +10,10 @@
 
 Question.destroy_all
 Answer.destroy_all
+TestPassing.destroy_all
 Test.destroy_all
 User.destroy_all
 Category.destroy_all
-TestPassing.destroy_all
 
 users = User.create!(
   [{ nickname: 'Alex K', login: 'Alex1111', password: '111111', role: 'admin', email: 'admin@testguru.com' },
@@ -29,12 +29,12 @@ categories = Category.create!(
 )
 
 tests = Test.create!(
-  [{ title: 'HTML Basic', level: 1, category_id: categories[1].id, author_id: User.second.id },
-   { title: 'Go', level: 3, category_id: categories[0].id, author_id: User.third.id },
-   { title: 'Ruby Basic', level: 1, category_id: categories[2].id, author_id: User.fourth.id },
-   { title: 'CSS3', level: 2, category_id: categories[1].id, author_id: User.third.id },
+  [{ title: 'HTML Basic', level: 1, category_id: categories[1].id, author_id: users[1].id },
+   { title: 'Go', level: 3, category_id: categories[0].id, author_id: users[2].id },
+   { title: 'Ruby Basic', level: 1, category_id: categories[2].id, author_id: users[3].id },
+   { title: 'CSS3', level: 2, category_id: categories[1].id, author_id: users[2].id },
    { title: 'Ruby on Rails Basic', level: 2, category_id: categories[2].id,
-     author_id: User.fourth.id }]
+     author_id: users[3].id }]
 )
 
 questions = Question.create!(
