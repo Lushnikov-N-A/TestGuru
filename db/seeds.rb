@@ -123,5 +123,6 @@ test_passings = TestPassing.create!(
   [{ user_id: users[0].id, test_id: tests[0].id, correct_questions: 2 },
    { user_id: users[0].id, test_id: tests[1].id, correct_questions: 1 },
    { user_id: users[0].id, test_id: tests[3].id, correct_questions: 1 },
+   { user_id: users[1].id, test_id: tests[0].id, correct_questions: 1 },
    { user_id: users[0].id, test_id: tests[4].id, correct_questions: 3 }]
 )
