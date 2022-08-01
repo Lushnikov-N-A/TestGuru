@@ -20,7 +20,7 @@ module TestGuru
     #
     config.i18n.available_locales
     I18n.available_locales = %i[en ru]
-    I18n.default_locale = :ru
+    I18n.default_locale = :en
     config.time_zone = 'Asia/Yekaterinburg'
     # config.eager_load_paths << Rails.root.join("extras")
   end
