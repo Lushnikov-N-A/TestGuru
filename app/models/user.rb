@@ -8,4 +8,6 @@ class User < ApplicationRecord
   def test_level_pass(level_pass_test)
     tests.where(level: level_pass_test)
   end
+
+  validates :email, presence: true
 end
