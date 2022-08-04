@@ -3,11 +3,11 @@
 class Answer < ApplicationRecord
   belongs_to :question
 
-  scope :correct_answers, -> { where(correct: true) }
-
   validates :title, presence: true
 
   validate :answers_amount_for_qustion, on: :create
+
+  scope :correct_answers, -> { where(correct: true) }
 
   private
 
