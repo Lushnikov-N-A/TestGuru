@@ -30,10 +30,10 @@ categories = Category.create!(
 
 tests = Test.create!(
   [{ title: 'HTML Basic', level: 1, category: categories[1], author: users[0] },
-   { title: 'Go', level: 3, category: categories[0], author: users[0] },
-   { title: 'Ruby Basic', level: 1, category: categories[2], author: users[2] },
-   { title: 'CSS3', level: 2, category: categories[1], author: users[1] },
-   { title: 'Ruby on Rails Basic', level: 2, category: categories[2],
+   { title: 'Go', level: 6, category: categories[0], author: users[0] },
+   { title: 'Ruby Basic', level: 4, category: categories[2], author: users[2] },
+   { title: 'CSS3', level: 3, category: categories[1], author: users[1] },
+   { title: 'Ruby on Rails Basic', level: 5, category: categories[2],
      author: users[3] }]
 )
 
@@ -80,11 +80,9 @@ answers = Answer.create!(
    { title: 'Си', question: questions[4], correct: true },
    { title: 'С++', question: questions[4] },
    { title: 'Java', question: questions[4] },
-   { title: 'COBOL', question: questions[4] },
    { title: 'Код указан верно', question: questions[5] },
    { title: 'Нужно прописывать через запятую', question: questions[5] },
    { title: 'Код указан не верно', question: questions[5] },
-   { title: 'Ответ 4', question: questions[5] },
    { title: 'ответ 5', question: questions[5], correct: true },
    { title: 'x /= 3', question: questions[6], correct: true },
    { title: 'Нет сокращенной формы', question: questions[6] },
