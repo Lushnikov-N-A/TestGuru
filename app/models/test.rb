@@ -22,9 +22,6 @@ class Test < ApplicationRecord
                               }
 
   def self.sort_tests_by_category(test_category)
-    joins(:category)
-      .where(categories: { title: test_category })
-      .order(title: :desc)
-      .pluck(:title)
+    sort_category_title(test_category).pluck(:title)
   end
 end
