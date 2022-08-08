@@ -2,7 +2,7 @@
 
 class QuestionsController < ApplicationController
   before_action :question_by_id, only: %i[show destroy]
-  before_action :find_test_by_id, only: [:create]
+  before_action :find_test, only: [:create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  def find_test_by_id
+  def find_test
     @test = Test.find(params[:test_id])
   end
 
