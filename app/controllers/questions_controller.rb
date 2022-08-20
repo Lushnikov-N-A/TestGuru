@@ -1,33 +1,51 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-  before_action :question_by_id, only: %i[show destroy]
-  before_action :find_test, only: [:create]
+  before_action :find_test, only: %i[create index]
+  before_action :find_question, only: %i[show destroy show update edit]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
+  # rescue_from ActiveRecord::RecordNotFound, :with => :rescue_with_question_not_found
 
   def index
     @questions = Question.where(test_id: params[:test_id])
   end
 
   def show
-    render json: { question: @question }
+    @test = Test.find(id = @question.test_id)
   end
 
-  def new; end
+  def new
+    @test = Test.find(params[:test_id])
+    @question = @test.questions.new
+    if @question.save
+      redirect_to test_questions_url
+    else
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @question.update(question_params)
+      redirect_to test_url(id: @question.test.id)
+    else
+      render :edit
+    end
+  end
 
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to @question
+      redirect_to test_url(id: @test.id)
     else
-      redirect_to new_test_question_url
+      render :new
     end
   end
 
   def destroy
     @question.destroy
-    redirect_to new_test_question_url
+    redirect_to test_url
   end
 
   private
@@ -36,7 +54,7 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:title)
   end
 
-  def question_by_id
+  def find_question
     @question = Question.find(params[:id])
   end
 

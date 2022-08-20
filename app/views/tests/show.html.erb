@@ -1,0 +1,16 @@
+<h1>Test: <%= @test.title %>. </h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+  </tr>
+  <tr>
+    <td align="center"><%= @test.title %></td>
+    <td align="center"><%= @test.level %></td>
+  </tr>
+</table>
+<p>Question of test: </p>
+<% @test.questions.each do |question| %>
+  <p><%= question.title %></p>
+<% end %>

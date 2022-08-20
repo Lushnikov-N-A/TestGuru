@@ -1,0 +1,22 @@
+<h1>Tests</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Number of questions</th>
+    <th colspan="4">Action</th>
+
+  </tr>
+
+  <% @tests.each do |test| %>
+    <tr>
+      <td><%= test.title %></td>
+      <td align="center"><%= test.level %></td>
+      <td align="center"><%= test.questions.count %></td>
+      <td><%= link_to 'Questions', test_questions_url(test) %></td>
+      <td><%= link_to 'Update', '/#' %></td>
+      <td><%= link_to 'Delete', '/#' %></td>
+      <td><%= link_to 'Edit', '/#' %></td>
+    </tr>
+  <% end %>
+</table>

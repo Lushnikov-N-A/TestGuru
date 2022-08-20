@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <p><%= link_to "Tests", tests_url, rel: 'nofollow noopener', target: '_blank' %></p>
+      <p><%= link_to "Sign In", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
+      <p><%= link_to "Sign Up", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
+    </nav>
+    <section>
+      <%= yield %>
+    </section>
+    <footer>
+      <p> <%= year %> </p>
+      <p> Автор проекта: <%= github_url('Lushnikov-N-A', 'TestGuru','author') %></p>
+      <p> Проект: <%= github_url('Lushnikov-N-A', 'TestGuru','repo') %></p>
+      <p> Данный проект создается в рамках обучения по курсу “Профессиональная разработка на Ruby on Rails” в онлайн-школе
+        <%= thinknetica %>.
+        Проект подразумевает создание системы онлайн тестирования пользователей.</p>
+    </footer>
   </body>
 </html>
