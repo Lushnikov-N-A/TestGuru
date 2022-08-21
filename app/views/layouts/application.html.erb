@@ -5,27 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <nav>
-      <p><%= link_to "Tests", tests_url, rel: 'nofollow noopener', target: '_blank' %></p>
-      <p><%= link_to "Sign In", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
-      <p><%= link_to "Sign Up", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
-    </nav>
+    <%= render "shared/nav" %>
     <section>
       <%= yield %>
     </section>
-    <footer>
-      <p> <%= year %> </p>
-      <p> Автор проекта: <%= github_url('Lushnikov-N-A', 'TestGuru','author') %></p>
-      <p> Проект: <%= github_url('Lushnikov-N-A', 'TestGuru','repo') %></p>
-      <p> Данный проект создается в рамках обучения по курсу “Профессиональная разработка на Ruby on Rails” в онлайн-школе
-        <%= thinknetica %>.
-        Проект подразумевает создание системы онлайн тестирования пользователей.</p>
-    </footer>
+    <%= render "shared/footer" %>
   </body>
 </html>

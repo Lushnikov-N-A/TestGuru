@@ -1,10 +1,10 @@
-<h1> Question of test "<%= pp @test.title %>" .</h1>
+<h1> Question of test "<%= pp @test.title %>".</h1>
 <table>
   <tr>
     <th>Title</th>
   </tr>
-
   <tr>
-      <td><%= @question.title %> <%= @question.id %></td>
+    <td> <%= @question.title %> </td>
   </tr>
 </table>
+<p><%= link_to 'Back', test_url(@test.id) %></p>
