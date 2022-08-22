@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-  before_action :find_test, only: %i[create index new]
+  before_action :find_test, only: %i[create new]
   before_action :find_question, only: %i[show destroy show update edit]
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_with_question_not_found
-
-  def index
-    @questions = Question.where(test_id: params[:test_id])
-  end
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def show
     @test = @question.test
