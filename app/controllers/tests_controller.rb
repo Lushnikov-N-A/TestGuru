@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[create destroy update edit]
+  before_action :find_test, only: %i[destroy update edit]
 
   def index
     @tests = Test.all
@@ -16,10 +16,10 @@ class TestsController < ApplicationController
     @test = Test.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
+    @test = Test.new(test_params)
     if @test.save
       redirect_to @test
     else
@@ -36,8 +36,11 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    @test.destroy
-    redirect_to tests_url
+    if @test.destroy
+      redirect_to tests_path
+    else
+      redirect_to @test
+    end
   end
 
   private
@@ -47,6 +50,6 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :category_id, :level, :author_id)
   end
 end

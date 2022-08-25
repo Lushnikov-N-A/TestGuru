@@ -5,6 +5,9 @@
   </tr>
   <tr>
     <td> <%= @question.title %> </td>
+    <td>
+      <%= button_to 'Delete Question', question_path(@question), method: :delete %>
+    </td>
   </tr>
 </table>
-<p><%= link_to 'Back', test_url(@test.id) %></p>
+<p><%= link_to 'Back', test_path(@test.id) %></p>
