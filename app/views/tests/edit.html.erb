@@ -1,0 +1,17 @@
+<h2><%= @test.title %></h2>
+<%= form_with model: @test, local: true do |form| %>
+  <p>
+    <%= form.label :title, "Test:" %>
+    <%= form.text_field :title, id: :test_title %>
+  </p>
+  <p>
+    <%= form.label :category_id, "Category:" %>
+    <%= form.collection_select :category_id, Category.all, :id, :title, promt: true  %>
+  </p>
+  <p>
+    <%= form.label :level, "Level:" %>
+    <%= form.number_field :level, id: :test_level %>
+  </p>
+  <%= form.submit %>
+<% end %>
+<br/>

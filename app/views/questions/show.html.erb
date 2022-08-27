@@ -1,0 +1,13 @@
+<h1> Question of test "<%= pp @test.title %>".</h1>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <tr>
+    <td> <%= @question.title %> </td>
+    <td>
+      <%= button_to 'Delete Question', question_path(@question), method: :delete %>
+    </td>
+  </tr>
+</table>
+<p><%= link_to 'Back', test_path(@test.id) %></p>

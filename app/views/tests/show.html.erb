@@ -1,0 +1,23 @@
+<h1>Test: <%= @test.title %>. </h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+  </tr>
+  <tr>
+    <td align="center"><%= @test.title %></td>
+    <td align="center"><%= @test.level %></td>
+  </tr>
+</table>
+<% if @questions.present? %>
+  <table>
+    <tr>
+      <th align="left">Questions:</th>
+      <th colspan="3"></th>
+    </tr>
+    <%= render @questions %>
+  </table>
+<% end %>
+<p><%= link_to 'New Question', new_test_question_path(test_id: @test.id)  %></p>
+<p><%= button_to 'Delete Test', test_path(@test), method: :delete %></p>
+<p><%= link_to 'Back', tests_path %></p>
