@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      # redirect_to test_path(id: @question.test.id)
       redirect_to @question
     else
       render :edit
@@ -41,7 +40,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    redirect_to test_path(@question.test.id)
+    redirect_to test_path(@question.test.id), status: :see_other
   end
 
   private
