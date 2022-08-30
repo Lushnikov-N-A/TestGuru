@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -39,9 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 20_220_803_194_128) do
   create_table 'test_passings', force: :cascade do |t|
     t.integer 'user_id', null: false
     t.integer 'test_id', null: false
+    t.integer 'current_question_id'
     t.integer 'correct_questions', default: 0
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['current_question_id'], name: 'index_test_passings_on_current_question_id'
     t.index ['test_id'], name: 'index_test_passings_on_test_id'
     t.index ['user_id'], name: 'index_test_passings_on_user_id'
   end
@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 20_220_803_194_128) do
 
   add_foreign_key 'answers', 'questions'
   add_foreign_key 'questions', 'tests'
+  add_foreign_key 'test_passings', 'questions', column: 'current_question_id'
   add_foreign_key 'test_passings', 'tests'
   add_foreign_key 'test_passings', 'users'
   add_foreign_key 'tests', 'categories'

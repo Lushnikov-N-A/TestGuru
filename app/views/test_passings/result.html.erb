@@ -1,0 +1,14 @@
+<h1>Result of test <%= @test_passing.test.title %></h1>
+
+<% if @test_passing.successful? %>
+    <h2 style="color:green">The <%= @test_passing.test.title %> Test was completed! </h2>
+<% else %>
+    <h2 style="color:red">The <%= @test_passing.test.title %> Test was failed! </h2>
+<% end%>
+<br>
+<p>All questions of test: <%= @test_passing.questions_count %></p>
+<p>Correct questions: <%=@test_passing.correct_questions %></p>
+<progress max="100" value="<%= @test_passing.percent_result %>">
+    <span id="value"><%= @test_passing.percent_result %></span>
+</progress>
+<p>Success rate: <%= @test_passing.percent_result %>%</p>

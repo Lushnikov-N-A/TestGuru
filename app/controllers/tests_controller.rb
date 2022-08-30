@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[destroy update edit]
+  before_action :find_test, only: %i[show destroy update edit start]
 
   def index
     @tests = Test.all
   end
 
   def show
-    @test = Test.find(params[:id])
     @questions = @test.questions
   end
 
@@ -37,10 +36,16 @@ class TestsController < ApplicationController
 
   def destroy
     if @test.destroy
-      redirect_to tests_path
+      redirect_to tests_path, status: :see_other
     else
       redirect_to @test
     end
+  end
+
+  def start
+    @user = User.third
+    @user.tests.push(@test)
+    redirect_to @user.test_passing(@test)
   end
 
   private
