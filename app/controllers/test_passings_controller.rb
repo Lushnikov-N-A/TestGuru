@@ -19,5 +19,4 @@ class TestPassingsController < ApplicationController
   def set_test_passing
     @test_passing = TestPassing.find(params[:id])
   end
-
 end
