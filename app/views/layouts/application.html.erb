@@ -9,6 +9,9 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
+    <% if logged_in? %>
+      <p class="nav user">Welcome, <b><%= current_user.login %></b>!</p>
+    <% end %>
     <%= render "shared/nav" %>
     <section>
       <%= yield %>
