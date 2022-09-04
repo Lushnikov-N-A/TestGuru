@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new; end
 
-  def delete
+  def destroy
     reset_session
     redirect_to root_path
   end

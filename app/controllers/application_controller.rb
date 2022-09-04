@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?, :log_out
+  helper_method :current_user, :logged_in?, :user_request
 
   private
 
@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_user.present?
+  end
+
+  def user_request
+    cookies[:user_in_path] = request.original_url if logged_in? == false
   end
 end

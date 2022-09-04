@@ -4,6 +4,6 @@
   <p><%= link_to "Sign In", login_path, rel: 'nofollow noopener' %></p>
   <p><%= link_to "Sign Up", signup_path, rel: 'nofollow noopener' %></p>
   <% if logged_in? %>
-    <p><%= link_to "Sign Out", clear_session_path, rel: 'nofollow noopener' %></p>
+    <p><%= link_to "Sign Out", logout_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to exit?" }, rel: 'nofollow noopener' %></p>
   <% end %>
 </nav>
