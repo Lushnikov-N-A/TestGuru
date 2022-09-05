@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?, :user_request
+  helper_method :current_user, :logged_in?
 
   private
 
   def authenticate_user!
-    cookies[:user_in_path] = request.fullpath
-    redirect_to login_path unless current_user
+    unless current_user
+      cookies[:user_in_path] = request.fullpath
+      redirect_to login_path, alert: 'Are you a Guru? Verify your Email and Password please.'
+    end
   end
 
   def current_user
@@ -16,9 +18,5 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_user.present?
-  end
-
-  def user_request
-    cookies[:user_in_path] = request.original_url if logged_in? == false
   end
 end
