@@ -5,6 +5,10 @@ module ApplicationHelper
     Time.current.year
   end
 
+  def flash_message(key)
+    content_tag :p, flash[key], class: "flash #{key}" if flash[key]
+  end
+
   def github_url(author, repo, author_or_repo)
     case author_or_repo
     when 'author'

@@ -1,5 +1,9 @@
 <nav>
-  <p><%= link_to "Tests", tests_path, rel: 'nofollow noopener', target: '_blank' %></p>
-  <p><%= link_to "Sign In", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
-  <p><%= link_to "Sign Up", '/#', rel: 'nofollow noopener', target: '_blank' %></p>
+  <p><%= link_to "TestGuru", root_path, rel: 'nofollow noopener' %></p>
+  <p><%= link_to "Tests", tests_path, rel: 'nofollow noopener' %></p>
+  <p><%= link_to "Sign In", login_path, rel: 'nofollow noopener' %></p>
+  <p><%= link_to "Sign Up", signup_path, rel: 'nofollow noopener' %></p>
+  <% if logged_in? %>
+    <p><%= link_to "Sign Out", logout_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to exit?" }, rel: 'nofollow noopener' %></p>
+  <% end %>
 </nav>
